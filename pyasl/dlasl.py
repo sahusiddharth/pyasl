@@ -3,8 +3,8 @@ import numpy as np
 import glob
 import nibabel as nib
 from scipy.ndimage import affine_transform
-from utils.models import dilated_net_wide
-from utils.utils import read_data_description, load_img
+from pyasl.utils.models import dilated_net_wide
+from pyasl.utils.utils import read_data_description, load_img
 
 
 def dlasl_resample(v: nib.Nifti1Image, data: np.ndarray):
@@ -87,3 +87,8 @@ def dlasl_pipeline(root: str, model_selection=1, pattern=".*_CBF\.(nii|nii\.gz)$
             x_nii = nib.Nifti1Image(x_, vitem.affine, vitem.header)
             path, filename = os.path.split(cbf_file)
             x_nii.to_filename(os.path.join(path, f"denoised_{filename}"))
+
+
+def concept_testing():
+    print("its working")
+    return 0
